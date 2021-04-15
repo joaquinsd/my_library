@@ -1,0 +1,70 @@
+<!-- <%= form_with(model: book, local: true) do |form| %> 
+<% if book.errors.any? %>
+<div id="error_explanation">
+  <h2>
+    <%= pluralize(book.errors.count, "error") %> prohibited this book from being
+    saved:
+  </h2>
+
+  <ul>
+    <% book.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div class="field"><%= form.label :title %> <%= form.text_field :title %></div>
+
+<div class="field">
+  <%= form.label :author %> <%= form.text_field :author %>
+</div>
+
+<div class="field">
+  <%= form.label :status %> 
+  <%= form.select :status, ['In Shelf', 'Library']%>
+</div>
+
+<div class="actions"><%= form.submit %></div>
+<% end %>
+
+ -->
+<%= form_for(@book) do |f| %>
+  <% if book.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved: </h2>
+    <ul>
+      <% book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <div class="form-group">
+    <%=  f.label :title, 'Enter the title'%>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%=  f.label :author, 'Enter the author' %>
+    <%= f.text_field :author, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :status, "Book Status" %>
+    <%= f.select :status, %w[Borrowed Shelf]%>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :borrowing_date %>
+    <%= f.datetime_select :borrowing_date%>
+  </div>
+  <div class="form-group">
+    <%= f.label :return_date %>
+    <%= f.datetime_select :return_date%>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,30 @@
+<div class="container">
+  <h1>Your Book</h1>
+  <p>
+    <strong>Title:</strong>
+    <%= @book.title %>
+  </p>
+
+  <p>
+    <strong>Author:</strong>
+    <%= @book.author %>
+  </p>
+
+  <p>
+    <strong>Status:</strong>
+    <%= @book.status %>
+  </p>
+
+  <p>
+    <strong>Borrowing Date:</strong>
+    <%= @book.borrowing_date%>
+  </p>
+
+  <p>
+    <strong>Return Date:</strong>
+    <%= @book.return_date%>
+  </p>
+
+  <%= link_to 'Edit', edit_book_path(@book) %> |
+  <%= link_to 'Back', books_path %>
+</div>
